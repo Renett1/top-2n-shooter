@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="data:,"> <!-- Prevent favicon 404/security prompts -->
-    <title>GRENKA - Top-Down Shooter</title>
+    <title>TUNNEL 4308</title>
     <style>
         body,
         html {
@@ -324,13 +324,13 @@
 
     <div id="tutorial" class="hidden">
         <div class="tut-box">
-            <h2 style="color: #FFB400;">ИНСТРУКЦИЯ ПО ВЫЖИВАНИЮ</h2>
-            <p><span class="tut-key">W/A/S/D</span> — ПЕРЕМЕЩЕНИЕ</p>
-            <p><span class="tut-key">ЛКМ</span> — СТРЕЛЬБА | <span class="tut-key">G</span> — ГРАНАТА</p>
-            <p><span class="tut-key">F</span> — ФОНАРЬ | <span class="tut-key">R</span> — ПЕРЕЗАРЯДКА</p>
-            <p><span class="tut-key">3</span> — ГЕМОСТАТИК | <span class="tut-key">4</span> — АДРЕНАЛИН</p>
-            <p><span class="tut-key">E</span> — ВЗАИМОДЕЙСТВИЕ (УДЕРЖИВАТЬ)</p>
-            <h3 style="color: #666; margin-top: 30px;">НАЖМИТЕ ЛЮБУЮ КЛАВИШУ ДЛЯ ПУСКА</h3>
+            <h2 style="color: #FFB400;">SURVIVAL GUIDE</h2>
+            <p><span class="tut-key">W/A/S/D</span> — MOVE</p>
+            <p><span class="tut-key">LMB</span> — FIRE | <span class="tut-key">G</span> — GRENADE</p>
+            <p><span class="tut-key">F</span> — FLASHLIGHT | <span class="tut-key">R</span> — RELOAD</p>
+            <p><span class="tut-key">3</span> — TOURNIQUET | <span class="tut-key">4</span> — ADRENALINE</p>
+            <p><span class="tut-key">E</span> — INTERACT (HOLD)</p>
+            <h3 style="color: #666; margin-top: 30px;">PRESS ANY KEY TO START</h3>
         </div>
     </div>
 
@@ -341,39 +341,39 @@
     <!-- MENU SYSTEM -->
     <div id="main-menu" class="menu-overlay">
         <div class="menu-content">
-            <h1 class="menu-title">GRENKA: 4308</h1>
+            <h1 class="menu-title">TUNNEL 4308</h1>
             <div style="margin-bottom: 20px;">
-                <span style="display: block; margin-bottom: 10px; color: #7f8c8d;">УРОВЕНЬ СЛОЖНОСТИ</span>
-                <button class="diff-btn" id="diff-easy" onclick="game.setDifficulty('easy')">ЛЕГКО</button>
-                <button class="diff-btn selected" id="diff-normal" onclick="game.setDifficulty('normal')">НОРМА</button>
-                <button class="diff-btn" id="diff-hard" onclick="game.setDifficulty('hard')">ХАРДКОР</button>
+                <span style="display: block; margin-bottom: 10px; color: #7f8c8d;">DIFFICULTY</span>
+                <button class="diff-btn" id="diff-easy" onclick="game.setDifficulty('easy')">EASY</button>
+                <button class="diff-btn selected" id="diff-normal" onclick="game.setDifficulty('normal')">NORMAL</button>
+                <button class="diff-btn" id="diff-hard" onclick="game.setDifficulty('hard')">HARDCORE</button>
             </div>
-            <button onclick="game.start()" style="width: 250px;">В БОЙ</button><br>
-            <button onclick="game.showSettings()" style="width: 250px;">НАСТРОЙКИ</button>
+            <button onclick="game.start()" style="width: 250px;">START MISSION</button><br>
+            <button onclick="game.showSettings()" style="width: 250px;">SETTINGS</button>
         </div>
     </div>
 
     <div id="pause-menu" class="menu-overlay hidden">
         <div class="menu-content">
-            <h1 class="menu-title">ПАУЗА</h1>
-            <button onclick="game.resume()">ПРОДОЛЖИТЬ</button><br>
-            <button onclick="game.showSettings()">НАСТРОЙКИ</button><br>
-            <button onclick="game.toMainMenu()">В МЕНЮ</button>
+            <h1 class="menu-title">PAUSED</h1>
+            <button onclick="game.resume()">RESUME</button><br>
+            <button onclick="game.showSettings()">SETTINGS</button><br>
+            <button onclick="game.toMainMenu()">MAIN MENU</button>
         </div>
     </div>
 
     <div id="settings-menu" class="menu-overlay hidden">
         <div class="menu-content">
-            <h1 class="menu-title">НАСТРОЙКИ</h1>
+            <h1 class="menu-title">SETTINGS</h1>
             <div class="settings-row">
-                <span>ЗВУК</span>
+                <span>SOUND</span>
                 <input type="checkbox" id="setting-sound" checked onchange="game.updateSettings()">
             </div>
             <div class="settings-row">
-                <span>ТРЯСКА КАМЕРЫ</span>
+                <span>CAMERA SHAKE</span>
                 <input type="checkbox" id="setting-shake" checked onchange="game.updateSettings()">
             </div>
-            <button onclick="game.closeSettings()" style="width: 100%;">НАЗАД</button>
+            <button onclick="game.closeSettings()" style="width: 100%;">BACK</button>
         </div>
     </div>
 
@@ -387,13 +387,13 @@
                     <div id="stamina-fill" class="stat-fill"></div>
                 </div>
                 <div class="items-hud">
-                    <div class="item-slot" id="slot-3" title="ГЕМОСТАТИК (ЖГУТ)">
+                    <div class="item-slot" id="slot-3" title="TOURNIQUET">
                         <span class="item-key">3</span>
                         <div class="item-icon"
                             style="background: #e74c3c; width: 20px; height: 20px; border: 2px solid #fff;"></div>
                         <span class="item-count" id="count-hemo">0</span>
                     </div>
-                    <div class="item-slot" id="slot-4" title="АДРЕНАЛИН">
+                    <div class="item-slot" id="slot-4" title="ADRENALINE">
                         <span class="item-key">4</span>
                         <div class="item-icon"
                             style="background: #3498db; width: 14px; height: 24px; border-radius: 4px; border: 1px solid #fff;">
@@ -401,10 +401,10 @@
                         <span class="item-count" id="count-adren">0</span>
                     </div>
                 </div>
-                <div id="breath-text" class="breath-indicator">ТЯЖЕЛОЕ ДЫХАНИЕ...</div>
+                <div id="breath-text" class="breath-indicator">HEAVY BREATHING...</div>
             </div>
             <div class="weapon-hud">
-                <div id="weapon-name" style="font-size: 18px; color: #95a5a6; margin-bottom: 5px;">АК-74М</div>
+                <div id="weapon-name" style="font-size: 18px; color: #95a5a6; margin-bottom: 5px;">AK-74M</div>
                 <div class="ammo-container">
                     <div id="ammo-bar-ui" class="ammo-bar-container"></div>
                     <div id="ammo-text-large">30</div>
@@ -420,9 +420,9 @@
 
     <div id="game-over-menu" class="menu-overlay hidden">
         <div class="menu-content">
-            <h1 id="ov-title" class="menu-title">ПОРАЖЕНИЕ</h1>
-            <p id="ov-desc">Воин живёт, пока о нём помнят.</p>
-            <button onclick="game.toMainMenu()">В МЕНЮ</button>
+            <h1 id="ov-title" class="menu-title">MISSION FAILED</h1>
+            <p id="ov-desc">MISSION UNSUCCESSFUL. TRY AGAIN.</p>
+            <button onclick="game.toMainMenu()">MAIN MENU</button>
         </div>
     </div>
 
@@ -641,6 +641,8 @@
             start() {
                 audio.init();
                 this.state = 'PLAYING';
+                document.getElementById('ov-title').innerText = 'MISSION FAILED';
+                document.getElementById('ov-desc').innerText = 'MISSION UNSUCCESSFUL. TRY AGAIN.';
                 document.getElementById('main-menu').classList.add('hidden');
                 document.getElementById('ui-layer').classList.remove('hidden');
                 this.initEntities();
@@ -787,12 +789,12 @@
                 const distToHDD = this.hdd ? this.player.pos.dist(this.hdd.pos) : Infinity;
 
                 if (this.hdd && distToHDD < 60) {
-                    this.updateInteraction(dt, "[E] ПОДОБРАТЬ HDD", () => { this.hdd = null; this.missionHDDCollected = true; this.hermosDoor.open(); });
+                    this.updateInteraction(dt, "[E] PICK UP HDD", () => { this.hdd = null; this.missionHDDCollected = true; this.hermosDoor.open(); });
                 } else if (distToConsole < this.consoleZone.radius) {
-                    document.getElementById('game-msg').innerText = "ТЕРМИНАЛ: ДОСТУП РАЗРЕШЕН";
+                    document.getElementById('game-msg').innerText = "TERMINAL: ACCESS GRANTED";
                     this.interactionTimer = 0; document.getElementById('radial-ui').style.display = 'none';
                 } else if (this.missionHDDCollected && this.player.pos.y < 40) {
-                    this.state = 'OVER'; document.getElementById('ov-title').innerText = "ПОБЕДА"; document.getElementById('ov-desc').innerText = "ОПЕРАЦИЯ ВЫПОЛНЕНА. ГРУППА ЭВАКУИРОВАНА."; document.getElementById('game-over-menu').classList.remove('hidden');
+                    this.state = 'OVER'; document.getElementById('ov-title').innerText = "VICTORY"; document.getElementById('ov-desc').innerText = "OPERATION COMPLETE. THE SQUAD HAS BEEN EVACUATED."; document.getElementById('game-over-menu').classList.remove('hidden');
                 } else { this.interactionTimer = 0; document.getElementById('game-msg').innerText = ""; document.getElementById('radial-ui').style.display = 'none'; }
 
                 for (let i = this.bullets.length - 1; i >= 0; i--) {
